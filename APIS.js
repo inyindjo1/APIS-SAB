@@ -29,19 +29,19 @@ let comments = [
 ];
 
 
-// app.get('/api/users', (req, res) => {
-//   res.json(users);
-// });
+app.get('/api/users', (req, res) => {
+  res.json(users);
+});
 
-// app.post('/api/users', (req, res) => {
-//   const newUser = {
-//     id: users.length + 1,
-//     name: req.body.name,
-//     age: req.body.age
-//   };
-//   users.push(newUser);
-//   res.status(201).json(newUser);
-// });
+app.post('/api/users', (req, res) => {
+  const newUser = {
+    id: users.length + 1,
+    name: req.body.name,
+    age: req.body.age
+  };
+  users.push(newUser);
+  res.status(201).json(newUser);
+});
 
 // app.put('/api/users/:id', (req, res) => {
 //   const id = parseInt(req.params.id);
