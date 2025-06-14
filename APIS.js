@@ -61,24 +61,24 @@ app.delete('/api/users/:id', (req, res) => {
 });
 
 
-// app.get('/api/posts', (req, res) => {
-//   const userId = req.query.userId;
-//   if (userId) {
-//     const filtered = posts.filter(p => p.userId == userId);
-//     return res.json(filtered);
-//   }
-//   res.json(posts);
-// });
+app.get('/api/posts', (req, res) => {
+  const userId = req.query.userId;
+  if (userId) {
+    const filtered = posts.filter(p => p.userId == userId);
+    return res.json(filtered);
+  }
+  res.json(posts);
+});
 
-// app.post('/api/posts', (req, res) => {
-//   const newPost = {
-//     id: posts.length + 1,
-//     userId: req.body.userId,
-//     title: req.body.title
-//   };
-//   posts.push(newPost);
-//   res.status(201).json(newPost);
-// });
+app.post('/api/posts', (req, res) => {
+  const newPost = {
+    id: posts.length + 1,
+    userId: req.body.userId,
+    title: req.body.title
+  };
+  posts.push(newPost);
+  res.status(201).json(newPost);
+});
 
 // app.put('/api/posts/:id', (req, res) => {
 //   const id = parseInt(req.params.id);
