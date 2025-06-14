@@ -13,20 +13,20 @@ app.use((req, res, next) => {
   next();
 });
 
-// let users = [
-//   { id: 1, name: 'Alice', age: 25 },
-//   { id: 2, name: 'Bob', age: 30 }
-// ];
+let users = [
+  { id: 1, name: 'Alice', age: 25 },
+  { id: 2, name: 'Bob', age: 30 }
+];
 
-// let posts = [
-//   { id: 1, userId: 1, title: 'Hello World' },
-//   { id: 2, userId: 2, title: 'Second Post' }
-// ];
+let posts = [
+  { id: 1, userId: 1, title: 'Hello World' },
+  { id: 2, userId: 2, title: 'Second Post' }
+];
 
-// let comments = [
-//   { id: 1, postId: 1, content: 'Nice post!' },
-//   { id: 2, postId: 2, content: 'Thanks for sharing.' }
-// ];
+let comments = [
+  { id: 1, postId: 1, content: 'Nice post!' },
+  { id: 2, postId: 2, content: 'Thanks for sharing.' }
+];
 
 
 // app.get('/api/users', (req, res) => {
