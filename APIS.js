@@ -88,17 +88,17 @@ app.put('/api/posts/:id', (req, res) => {
   res.json(post);
 });
 
-// app.delete('/api/posts/:id', (req, res) => {
-//   const id = parseInt(req.params.id);
-//   const index = posts.findIndex(p => p.id === id);
-//   if (index === -1) return res.status(404).send('Post not found');
-//   const deleted = posts.splice(index, 1);
-//   res.json(deleted[0]);
-// });
+app.delete('/api/posts/:id', (req, res) => {
+  const id = parseInt(req.params.id);
+  const index = posts.findIndex(p => p.id === id);
+  if (index === -1) return res.status(404).send('Post not found');
+  const deleted = posts.splice(index, 1);
+  res.json(deleted[0]);
+});
 
-// app.get('/api/comments', (req, res) => {
-//   res.json(comments);
-// });
+app.get('/api/comments', (req, res) => {
+  res.json(comments);
+});
 
 // app.post('/api/comments', (req, res) => {
 //   const newComment = {
