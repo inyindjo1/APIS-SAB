@@ -52,13 +52,13 @@ app.put('/api/users/:id', (req, res) => {
   res.json(user);
 });
 
-// app.delete('/api/users/:id', (req, res) => {
-//   const id = parseInt(req.params.id);
-//   const index = users.findIndex(u => u.id === id);
-//   if (index === -1) return res.status(404).send('User not found');
-//   const deleted = users.splice(index, 1);
-//   res.json(deleted[0]);
-// });
+app.delete('/api/users/:id', (req, res) => {
+  const id = parseInt(req.params.id);
+  const index = users.findIndex(u => u.id === id);
+  if (index === -1) return res.status(404).send('User not found');
+  const deleted = users.splice(index, 1);
+  res.json(deleted[0]);
+});
 
 
 // app.get('/api/posts', (req, res) => {
