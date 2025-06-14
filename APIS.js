@@ -80,13 +80,13 @@ app.post('/api/posts', (req, res) => {
   res.status(201).json(newPost);
 });
 
-// app.put('/api/posts/:id', (req, res) => {
-//   const id = parseInt(req.params.id);
-//   const post = posts.find(p => p.id === id);
-//   if (!post) return res.status(404).send('Post not found');
-//   post.title = req.body.title;
-//   res.json(post);
-// });
+app.put('/api/posts/:id', (req, res) => {
+  const id = parseInt(req.params.id);
+  const post = posts.find(p => p.id === id);
+  if (!post) return res.status(404).send('Post not found');
+  post.title = req.body.title;
+  res.json(post);
+});
 
 // app.delete('/api/posts/:id', (req, res) => {
 //   const id = parseInt(req.params.id);
