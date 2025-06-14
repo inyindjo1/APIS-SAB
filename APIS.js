@@ -100,23 +100,23 @@ app.get('/api/comments', (req, res) => {
   res.json(comments);
 });
 
-// app.post('/api/comments', (req, res) => {
-//   const newComment = {
-//     id: comments.length + 1,
-//     postId: req.body.postId,
-//     content: req.body.content
-//   };
-//   comments.push(newComment);
-//   res.status(201).json(newComment);
-// });
+app.post('/api/comments', (req, res) => {
+  const newComment = {
+    id: comments.length + 1,
+    postId: req.body.postId,
+    content: req.body.content
+  };
+  comments.push(newComment);
+  res.status(201).json(newComment);
+});
 
-// app.put('/api/comments/:id', (req, res) => {
-//   const id = parseInt(req.params.id);
-//   const comment = comments.find(c => c.id === id);
-//   if (!comment) return res.status(404).send('Comment not found');
-//   comment.content = req.body.content;
-//   res.json(comment);
-// });
+app.put('/api/comments/:id', (req, res) => {
+  const id = parseInt(req.params.id);
+  const comment = comments.find(c => c.id === id);
+  if (!comment) return res.status(404).send('Comment not found');
+  comment.content = req.body.content;
+  res.json(comment);
+});
 
 // app.delete('/api/comments/:id', (req, res) => {
 //   const id = parseInt(req.params.id);
