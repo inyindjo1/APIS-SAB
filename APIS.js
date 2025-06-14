@@ -43,14 +43,14 @@ app.post('/api/users', (req, res) => {
   res.status(201).json(newUser);
 });
 
-// app.put('/api/users/:id', (req, res) => {
-//   const id = parseInt(req.params.id);
-//   const user = users.find(u => u.id === id);
-//   if (!user) return res.status(404).send('User not found');
-//   user.name = req.body.name;
-//   user.age = req.body.age;
-//   res.json(user);
-// });
+app.put('/api/users/:id', (req, res) => {
+  const id = parseInt(req.params.id);
+  const user = users.find(u => u.id === id);
+  if (!user) return res.status(404).send('User not found');
+  user.name = req.body.name;
+  user.age = req.body.age;
+  res.json(user);
+});
 
 // app.delete('/api/users/:id', (req, res) => {
 //   const id = parseInt(req.params.id);
