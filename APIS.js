@@ -118,20 +118,20 @@ app.put('/api/comments/:id', (req, res) => {
   res.json(comment);
 });
 
-// app.delete('/api/comments/:id', (req, res) => {
-//   const id = parseInt(req.params.id);
-//   const index = comments.findIndex(c => c.id === id);
-//   if (index === -1) return res.status(404).send('Comment not found');
-//   const deleted = comments.splice(index, 1);
-//   res.json(deleted[0]);
-// });
+app.delete('/api/comments/:id', (req, res) => {
+  const id = parseInt(req.params.id);
+  const index = comments.findIndex(c => c.id === id);
+  if (index === -1) return res.status(404).send('Comment not found');
+  const deleted = comments.splice(index, 1);
+  res.json(deleted[0]);
+});
 
 
-// app.use((err, req, res, next) => {
-//   console.error('Error:', err);
-//   res.status(500).send('Something went wrong.');
-// });
+app.use((err, req, res, next) => {
+  console.error('Error:', err);
+  res.status(500).send('Something went wrong.');
+});
 
-// app.listen(PORT, () => {
-//   console.log(`Server is running on http://localhost:${PORT}`);
-// });
+app.listen(PORT, () => {
+  console.log(`Server is running on http://localhost:${PORT}`);
+});
