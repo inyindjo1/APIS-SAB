@@ -6,7 +6,6 @@ const PORT = 3000;
 app.use(express.json());
 app.use(express.static('public'));
 
-
 app.use((req, res, next) => {
   console.log('Request received:', req.method, req.url);
   next();
@@ -17,10 +16,9 @@ app.use((req, res, next) => {
   next();
 });
 
-
 let users = [
-  { id: artist1 , name: 'Wizkid', age: 25 },
-  { id: Artist2, name: 'lafouine', age: 30 }
+  { id: 1, name: 'Wizkid', age: 25 },
+  { id: 2, name: 'lafouine', age: 30 }
 ];
 
 let posts = [
@@ -32,7 +30,6 @@ let comments = [
   { id: 1, postId: 1, content: 'Nice post!' },
   { id: 2, postId: 2, content: 'Thanks for sharing.' }
 ];
-
 
 const userTemplate = `
 <!DOCTYPE html>
@@ -55,7 +52,6 @@ app.get('/', (req, res) => {
   const html = ejs.render(userTemplate, { users });
   res.send(html);
 });
-
 
 app.get('/api/users', (req, res) => res.json(users));
 
@@ -85,7 +81,6 @@ app.delete('/api/users/:id', (req, res) => {
   const deleted = users.splice(index, 1);
   res.json(deleted[0]);
 });
-
 
 app.get('/api/posts', (req, res) => {
   const userId = req.query.userId;
@@ -158,3 +153,4 @@ app.use((err, req, res, next) => {
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });
+
