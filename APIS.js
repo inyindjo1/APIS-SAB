@@ -1,8 +1,12 @@
 const express = require('express');
+const ejs = require('ejs');
 const app = express();
 const PORT = 3000;
 
 app.use(express.json());
+app.use(express.static('public'));
+
+
 app.use((req, res, next) => {
   console.log('Request received:', req.method, req.url);
   next();
@@ -13,14 +17,15 @@ app.use((req, res, next) => {
   next();
 });
 
+
 let users = [
-  { id: 1, name: 'Alice', age: 25 },
-  { id: 2, name: 'Bob', age: 30 }
+  { id: artist1 , name: 'Wizkid', age: 25 },
+  { id: Artist2, name: 'lafouine', age: 30 }
 ];
 
 let posts = [
-  { id: 1, userId: 1, title: 'Hello World' },
-  { id: 2, userId: 2, title: 'Second Post' }
+  { id: 1, userId: 1, title: 'Song(Mylove)' },
+  { id: 2, userId: 2, title: 'Song(Papa)' }
 ];
 
 let comments = [
@@ -29,9 +34,30 @@ let comments = [
 ];
 
 
-app.get('/api/users', (req, res) => {
-  res.json(users);
+const userTemplate = `
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Users</title>
+  </head>
+  <body>
+    <h1>Users</h1>
+    <ul>
+      <% for(let user of users) { %>
+        <li><%= user.name %> (Age: <%= user.age %>)</li>
+      <% } %>
+    </ul>
+  </body>
+</html>
+`;
+
+app.get('/', (req, res) => {
+  const html = ejs.render(userTemplate, { users });
+  res.send(html);
 });
+
+
+app.get('/api/users', (req, res) => res.json(users));
 
 app.post('/api/users', (req, res) => {
   const newUser = {
@@ -96,9 +122,7 @@ app.delete('/api/posts/:id', (req, res) => {
   res.json(deleted[0]);
 });
 
-app.get('/api/comments', (req, res) => {
-  res.json(comments);
-});
+app.get('/api/comments', (req, res) => res.json(comments));
 
 app.post('/api/comments', (req, res) => {
   const newComment = {
@@ -125,7 +149,6 @@ app.delete('/api/comments/:id', (req, res) => {
   const deleted = comments.splice(index, 1);
   res.json(deleted[0]);
 });
-
 
 app.use((err, req, res, next) => {
   console.error('Error:', err);
